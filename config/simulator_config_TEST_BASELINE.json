@@ -1,8 +1,8 @@
 {
-    "algorithm": "DistQ",
+    "algorithm": "random",
     "use_action_masks": false,
     "test_model": true,
-    "test_model_name": "models/9_units_increased_difficulty_3_product_same_config/reward5/True_True_25_True_500_False_IAP500/DistQ/DistQ_softmax_10_0.1_0.99_0.0001_0_q_init:0_1",
+    "test_model_name": "",
     "baseline_path": "models/20_units_increased_difficulty_5_product_diff_config_no_action_mask/random_baseline",
     "test_model_n_episodes": 10,
     "export_trajectories": false,
