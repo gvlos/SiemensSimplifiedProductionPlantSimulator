@@ -77,13 +77,13 @@ for run in range(n_runs):
     if test_model:
         n_episodes = test_model_n_episodes
 
-    if algorithm == 'FQI' and multiple_exploration_probabilities:
-        actual_expl_prob_index = 0
-        expl_prob_counter = 0
-        new_exploration_probability = exploration_probabilities[actual_expl_prob_index]
-        for fqi_agent in learning_agents:
-            fqi_agent.change_exploration_probability(new_exploration_probability)
-        print(f"Exploration probability changed to {new_exploration_probability}")
+    # if algorithm == 'FQI' and multiple_exploration_probabilities:
+    #     actual_expl_prob_index = 0
+    #     expl_prob_counter = 0
+    #     new_exploration_probability = exploration_probabilities[actual_expl_prob_index]
+    #     for fqi_agent in learning_agents:
+    #         fqi_agent.change_exploration_probability(new_exploration_probability)
+    #     print(f"Exploration probability changed to {new_exploration_probability}")
 
     for episode in range(n_episodes):
         if algorithm == 'DistQ' or algorithm == 'LPI':
@@ -246,6 +246,7 @@ for run in range(n_runs):
                         agent = learning_agents[actual_step['old_state']['current_agent']]
                         action = actual_step['action']
                         reward = actual_step['reward']
+                        agent_num = actual_step['old_state']['current_agent']
                         next_agent_num = agent.get_next_agent_number(action)
                         next_agent = learning_agents[next_agent_num]
 

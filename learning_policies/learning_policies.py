@@ -72,29 +72,29 @@ class LearningAgent:
     def select_action(self, observation, mask):
         allowed_actions = [action for action, mask in zip(self.actions, mask) if mask != 0]
         rescaled_non_production_actions = [action - self.actions[0] for action in allowed_actions]
-        print(f'Exploration prob: {self.exploration_prob}')
+        # print(f'Exploration prob: {self.exploration_prob}')
         if self.actions_policy == 'eps-greedy':
             if np.random.rand() < self.exploration_prob:
-                print('random action choosen')
+                # print('random action choosen')
                 return self.get_random_action(allowed_actions)
             else:
                 if observation not in self.values.keys():
-                    print('new observation, random action selection')
+                    # print('new observation, random action selection')
                     return self.get_random_action(allowed_actions)
                 
                 q_values = [self.values[observation]['Q'][a] for a in rescaled_non_production_actions]
-                print(f'actions: {allowed_actions}, q_values: {q_values}')
+                # print(f'actions: {allowed_actions}, q_values: {q_values}')
                 return allowed_actions[np.argmax(q_values)]
             
         elif self.actions_policy == 'softmax':
             if observation not in self.policy.keys():
-                print('new observation, random action selection')
+                # print('new observation, random action selection')
                 return self.get_random_action(allowed_actions)
             
             # IMPORTANT: we are computing probability referred only to allowed actions
             policy_values = [self.policy[observation][a] for a in rescaled_non_production_actions]
             prob_values = policy_values / np.sum(policy_values)
-            print(f'actions: {allowed_actions}, prob_values: {prob_values}')
+            # print(f'actions: {allowed_actions}, prob_values: {prob_values}')
             return np.random.choice(allowed_actions, p=prob_values)
         
     def get_next_agent_number(self, action):
