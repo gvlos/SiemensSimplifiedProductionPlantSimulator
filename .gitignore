@@ -1,2 +1,7 @@
 output/
 models/
+models_old/
+./*.pyc
+./*.pkl
+./*.h5
+__pycache__/

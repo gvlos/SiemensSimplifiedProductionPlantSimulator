@@ -9,7 +9,7 @@ SEMI_MDP_CONFIG_PATH = "config/semiMDP_reward_config.json"
 
 # given number of agents and algorithm return a list of istances of agents of that specific algorithm
 def initialize_agents(n_agents, algorithm, run_num, n_episodes, reward_type, available_actions, agents_connections):
-    model_units_folder = '9_units_increased_difficulty_3_product_same_config'#f'{n_agents}_units'
+    model_units_folder = f'{n_agents}_units'
     if reward_type == 'reward5':
         with open(SEMI_MDP_CONFIG_PATH) as config_file:
             semiMDP_reward_config = json.load(config_file)
